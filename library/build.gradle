@@ -1,8 +1,9 @@
 plugins {
     id 'com.android.library'
-    id 'maven-publish'
-    id 'signing'
+    id "com.vanniktech.maven.publish" version "0.32.0" apply true
 }
+
+import com.vanniktech.maven.publish.SonatypeHost
 
 android {
     namespace 'com.wang.avi'
@@ -26,73 +27,36 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    publishing {
-        singleVariant('release') {
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
 }
 
-def localProperties = new Properties()
-localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
+    coordinates("io.github.maitrungduc1410", "AVLoadingIndicatorView", "2.1.5")
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId = 'io.github.maitrungduc1410'
-            artifactId = 'AVLoadingIndicatorView'
-            version = '2.1.4'
-
-            afterEvaluate {
-                from components.release
-
-                pom {
-                    name = 'AVLoadingIndicatorView'
-                    description = 'Loading indicators for Android'
-                    url = 'https://github.com/maitrungduc1410/AVLoadingIndicatorView'
-                    licenses {
-                        license {
-                            name = 'The Apache License, Version 2.0'
-                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'maitrungduc1410'
-                            name = 'Mai Trung Duc'
-                            email = 'maitrungduc1410@gmail.com'
-                        }
-                    }
-                    scm {
-                        connection = 'scm:git:git://git@github.com:maitrungduc1410/AVLoadingIndicatorView.git'
-                        developerConnection = 'scm:git:ssh://git@github.com:maitrungduc1410/AVLoadingIndicatorView.git'
-                        url = 'https://github.com/maitrungduc1410/AVLoadingIndicatorView'
-                    }
-                }
+    pom {
+        name = "AVLoadingIndicatorView"
+        description = "Loading indicators for Android"
+        inceptionYear = "2023"
+        url = "https://github.com/maitrungduc1410/AVLoadingIndicatorView"
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
             }
         }
-    }
-    repositories {
-        maven {
-            credentials {
-                username = localProperties.getProperty("mavenUser")
-                password = localProperties.getProperty("mavenPassword")
+        developers {
+            developer {
+                id = 'maitrungduc1410'
+                name = 'Mai Trung Duc'
+                url = "https://github.com/maitrungduc1410/"
             }
-
-            // change URLs to point to your repos, e.g. http://my.org/repo
-            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+        scm {
+            connection = 'scm:git:git://git@github.com:maitrungduc1410/AVLoadingIndicatorView.git'
+            developerConnection = 'scm:git:ssh://git@github.com:maitrungduc1410/AVLoadingIndicatorView.git'
+            url = 'https://github.com/maitrungduc1410/AVLoadingIndicatorView'
         }
     }
-}
-
-signing {
-    sign publishing.publications.release
-}
-
-dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
 }
