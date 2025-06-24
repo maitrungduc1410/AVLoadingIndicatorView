@@ -32,7 +32,7 @@ android {
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
-    coordinates("io.github.maitrungduc1410", "AVLoadingIndicatorView", "2.1.5")
+    coordinates("io.github.maitrungduc1410", "AVLoadingIndicatorView", "2.2.0")
 
     pom {
         name = "AVLoadingIndicatorView"
