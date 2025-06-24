@@ -6,6 +6,16 @@
     android:background="#FFE75764"
     >
 
+    <Button
+        android:id="@+id/speedDemoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🚀 Animation Speed Demo"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#AA000000"
+        android:layout_margin="8dp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"

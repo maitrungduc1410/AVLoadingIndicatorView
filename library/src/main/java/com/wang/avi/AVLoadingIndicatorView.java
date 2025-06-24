@@ -63,6 +63,7 @@ public class AVLoadingIndicatorView extends View {
 
     private Indicator mIndicator;
     private int mIndicatorColor;
+    private float mAnimationSpeedMultiplier = 1.0f;
 
     private boolean mShouldStartAnimationDrawable;
 
@@ -102,6 +103,7 @@ public class AVLoadingIndicatorView extends View {
         mMaxHeight = a.getDimensionPixelSize(R.styleable.AVLoadingIndicatorView_maxHeight, mMaxHeight);
         String indicatorName=a.getString(R.styleable.AVLoadingIndicatorView_indicatorName);
         mIndicatorColor=a.getColor(R.styleable.AVLoadingIndicatorView_indicatorColor, Color.WHITE);
+        mAnimationSpeedMultiplier=a.getFloat(R.styleable.AVLoadingIndicatorView_animationSpeedMultiplier, 1.0f);
         setIndicator(indicatorName);
         if (mIndicator==null){
             setIndicator(DEFAULT_INDICATOR);
@@ -123,6 +125,8 @@ public class AVLoadingIndicatorView extends View {
             mIndicator = d;
             //need to set indicator color again if you didn't specified when you update the indicator .
             setIndicatorColor(mIndicatorColor);
+            //apply animation speed multiplier
+            setAnimationSpeedMultiplier(mAnimationSpeedMultiplier);
             if (d != null) {
                 d.setCallback(this);
             }
@@ -146,6 +150,25 @@ public class AVLoadingIndicatorView extends View {
     public void setIndicatorColor(int color){
         this.mIndicatorColor=color;
         mIndicator.setColor(color);
+    }
+
+    /**
+     * Set the animation speed multiplier.
+     * @param speedMultiplier Speed multiplier (1.0f = normal speed, 2.0f = 2x speed, 0.5f = half speed)
+     */
+    public void setAnimationSpeedMultiplier(float speedMultiplier) {
+        this.mAnimationSpeedMultiplier = speedMultiplier;
+        if (mIndicator != null) {
+            mIndicator.setAnimationSpeedMultiplier(speedMultiplier);
+        }
+    }
+
+    /**
+     * Get the current animation speed multiplier.
+     * @return Current speed multiplier
+     */
+    public float getAnimationSpeedMultiplier() {
+        return mAnimationSpeedMultiplier;
     }
 
 

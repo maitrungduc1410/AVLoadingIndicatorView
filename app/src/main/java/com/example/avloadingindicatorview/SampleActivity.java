@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,7 @@ public class SampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sample);
 
         mRecycler= (RecyclerView) findViewById(R.id.recycler);
+        Button speedDemoButton = findViewById(R.id.speedDemoButton);
 
         GridLayoutManager layoutManager=new GridLayoutManager(this,4);
         mRecycler.setLayoutManager(layoutManager);
@@ -53,6 +55,14 @@ public class SampleActivity extends AppCompatActivity {
             @Override
             public int getItemCount() {
                 return INDICATORS.length;
+            }
+        });
+        
+        speedDemoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SampleActivity.this, SpeedDemoActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -27,6 +27,7 @@ public abstract class Indicator extends Drawable implements Animatable {
     protected Rect drawBounds = ZERO_BOUNDS_RECT;
 
     private boolean mHasAnimators;
+    private float mAnimationSpeedMultiplier = 1.0f;
 
     private Paint mPaint=new Paint();
 
@@ -42,6 +43,26 @@ public abstract class Indicator extends Drawable implements Animatable {
 
     public void setColor(int color) {
         mPaint.setColor(color);
+    }
+
+    /**
+     * Set the animation speed multiplier.
+     * @param speedMultiplier Speed multiplier (1.0f = normal speed, 2.0f = 2x speed, 0.5f = half speed)
+     */
+    public void setAnimationSpeedMultiplier(float speedMultiplier) {
+        this.mAnimationSpeedMultiplier = speedMultiplier;
+        // If animators are already created, apply the speed multiplier
+        if (mHasAnimators && mAnimators != null) {
+            applySpeedMultiplierToAnimators();
+        }
+    }
+
+    /**
+     * Get the current animation speed multiplier.
+     * @return Current speed multiplier
+     */
+    public float getAnimationSpeedMultiplier() {
+        return mAnimationSpeedMultiplier;
     }
 
     @Override
@@ -119,6 +140,23 @@ public abstract class Indicator extends Drawable implements Animatable {
         if (!mHasAnimators) {
             mAnimators = onCreateAnimators();
             mHasAnimators = true;
+            // Apply speed multiplier to newly created animators
+            applySpeedMultiplierToAnimators();
+        }
+    }
+
+    /**
+     * Apply the speed multiplier to all animators
+     */
+    private void applySpeedMultiplierToAnimators() {
+        if (mAnimators != null && mAnimationSpeedMultiplier != 1.0f) {
+            for (ValueAnimator animator : mAnimators) {
+                if (animator != null) {
+                    long originalDuration = animator.getDuration();
+                    long newDuration = (long) (originalDuration / mAnimationSpeedMultiplier);
+                    animator.setDuration(newDuration);
+                }
+            }
         }
     }
 

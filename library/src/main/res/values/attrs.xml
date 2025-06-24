@@ -8,6 +8,7 @@
         <attr name="maxHeight" format="dimension"/>
         <attr name="indicatorName" format="string"/>
         <attr name="indicatorColor" format="color"/>
+        <attr name="animationSpeedMultiplier" format="float"/>
     </declare-styleable>
 
 </resources>
