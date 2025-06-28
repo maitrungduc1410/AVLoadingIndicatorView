@@ -17,7 +17,7 @@ public class BallScaleRippleMultipleIndicator extends BallScaleMultipleIndicator
     @Override
     public void draw(Canvas canvas, Paint paint) {
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(3);
+        paint.setStrokeWidth(4);
         super.draw(canvas, paint);
     }
 
@@ -40,8 +40,8 @@ public class BallScaleRippleMultipleIndicator extends BallScaleMultipleIndicator
             });
             scaleAnim.setStartDelay(delays[i]);
 
-            ValueAnimator alphaAnim=ValueAnimator.ofInt(0,255);
-            scaleAnim.setInterpolator(new LinearInterpolator());
+            ValueAnimator alphaAnim=ValueAnimator.ofInt(255, 255, 255, 0); // Stay fully opaque longer, then fade out
+            alphaAnim.setInterpolator(new LinearInterpolator()); // Fix: use alphaAnim instead of scaleAnim
             alphaAnim.setDuration(1000);
             alphaAnim.setRepeatCount(-1);
             addUpdateListener(alphaAnim,new ValueAnimator.AnimatorUpdateListener() {
@@ -51,7 +51,7 @@ public class BallScaleRippleMultipleIndicator extends BallScaleMultipleIndicator
                     postInvalidate();
                 }
             });
-            scaleAnim.setStartDelay(delays[i]);
+            alphaAnim.setStartDelay(delays[i]); // Fix: use alphaAnim instead of scaleAnim
 
             animators.add(scaleAnim);
             animators.add(alphaAnim);

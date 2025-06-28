@@ -17,7 +17,7 @@ public class BallScaleRippleIndicator extends BallScaleIndicator {
     @Override
     public void draw(Canvas canvas, Paint paint) {
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(3);
+        paint.setStrokeWidth(4);
         super.draw(canvas, paint);
     }
 
@@ -36,7 +36,7 @@ public class BallScaleRippleIndicator extends BallScaleIndicator {
             }
         });
 
-        ValueAnimator alphaAnim=ValueAnimator.ofInt(0, 255);
+        ValueAnimator alphaAnim=ValueAnimator.ofInt(255, 255, 255, 0); // Stay fully opaque longer, then fade out
         alphaAnim.setInterpolator(new LinearInterpolator());
         alphaAnim.setDuration(1000);
         alphaAnim.setRepeatCount(-1);

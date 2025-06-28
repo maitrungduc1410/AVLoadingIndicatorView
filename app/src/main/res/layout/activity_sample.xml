@@ -6,25 +6,50 @@
     android:background="#FFE75764"
     >
 
-    <Button
-        android:id="@+id/speedDemoButton"
+    <!-- Speed Control Section -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🚀 Animation Speed Demo"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#AA000000"
-        android:layout_margin="8dp"
-        />
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#AA000000"
+        android:layout_margin="8dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        <TextView
+            android:id="@+id/speedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Speed: 1.0x"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            />
+
+        <SeekBar
+            android:id="@+id/speedSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="375"
+            android:progress="75"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="2dp"
-        android:clipToPadding="false"
-        android:scrollbars="vertical"
-        android:scrollbarStyle="insideOverlay"
-        android:orientation="vertical"/>
+        android:padding="8dp">
+
+        <LinearLayout
+            android:id="@+id/indicatorsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            />
+
+    </ScrollView>
 
 
 </LinearLayout>

@@ -3,7 +3,7 @@
 A customizable Android loading indicator library with multiple built-in animations and configurable speed control.
 
 <div align="center">
-  <img src="./demo.png" width="400" alt="AVLoadingIndicatorView Demo"/>
+  <img src="./demo.jpeg" width="400" alt="AVLoadingIndicatorView Demo"/>
 </div>
 
 <br/>
@@ -13,7 +13,7 @@ A customizable Android loading indicator library with multiple built-in animatio
 
 ## ✨ Features
 
-- 🎨 **28+ Built-in Indicators** - Wide variety of loading animations
+- 🎨 **30+ Built-in Indicators** - Wide variety of loading animations (added 5 animations same as iOS version)
 - 🎛️ **Animation Speed Control** - Adjust animation speed from 0.25x to 3.25x
 - 🎯 **Easy Integration** - Simple XML and programmatic usage
 - 🔧 **Customizable** - Colors, sizes, and custom indicators
@@ -106,6 +106,9 @@ avi.setAnimationSpeedMultiplier(3.0f);  // Triple speed
 | Pacman | `PacmanIndicator` |
 | Ball Grid Beat | `BallGridBeatIndicator` |
 | Semi Circle Spin | `SemiCircleSpinIndicator` |
+| Audio Equalizer | `AudioEqualizerIndicator` |
+| Ball Double Bounce | `BallDoubleBounceIndicator` |
+| Orbit | `OrbitIndicator` |
 
 ## 🔧 Configuration
 

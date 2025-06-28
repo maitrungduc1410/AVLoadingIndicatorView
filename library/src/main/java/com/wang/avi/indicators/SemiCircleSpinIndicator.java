@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.view.animation.LinearInterpolator;
 
 import com.wang.avi.Indicator;
 
@@ -26,7 +27,8 @@ public class SemiCircleSpinIndicator extends Indicator {
     @Override
     public ArrayList<ValueAnimator> onCreateAnimators() {
         ArrayList<ValueAnimator> animators=new ArrayList<>();
-        ValueAnimator rotateAnim=ValueAnimator.ofFloat(0,180,360);
+        ValueAnimator rotateAnim=ValueAnimator.ofFloat(0, 360); // Continuous linear rotation
+        rotateAnim.setInterpolator(new LinearInterpolator()); // Linear interpolation for smooth continuous rotation
         addUpdateListener(rotateAnim,new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
