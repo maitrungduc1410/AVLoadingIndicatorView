@@ -25,7 +25,7 @@ Add the dependency to your app's `build.gradle`:
 
 ```gradle
 dependencies {
-    implementation "io.github.maitrungduc1410:AVLoadingIndicatorView:2.2.0"
+    implementation "io.github.maitrungduc1410:AVLoadingIndicatorView:2.3.0"
 }
 ```
 
