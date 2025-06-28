@@ -7,7 +7,8 @@ A customizable Android loading indicator library with multiple built-in animatio
 </div>
 
 <br/>
-> [!NOTE]  
+
+> [!NOTE]
 > This is a clone of [original repo](https://github.com/HarlonWang/AVLoadingIndicatorView). This project is created and pushed to Maven Central because the original repo is abandoned.
 
 ## ✨ Features
