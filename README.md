@@ -3,7 +3,7 @@
 A customizable Android loading indicator library with multiple built-in animations and configurable speed control.
 
 <div align="center">
-  <img src="./demo.jpeg" width="400" alt="AVLoadingIndicatorView Demo"/>
+  <img src="./demo.jpeg" width="300" alt="AVLoadingIndicatorView Demo"/>
 </div>
 
 <br/>
