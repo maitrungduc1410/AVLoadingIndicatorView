@@ -1,5 +1,11 @@
 # AVLoadingIndicatorView
 
+# Migration
+
+I have fully rewritten this from ground up with many more indicators, progress designs, pls check here: https://maitrungduc1410.github.io/loader-kit
+
+# Intro
+
 A customizable Android loading indicator library with multiple built-in animations and configurable speed control.
 
 <div align="center">
